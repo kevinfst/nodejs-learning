@@ -1,8 +1,19 @@
 import http from "node:http";
 
 const server = http.createServer((request, response) => {
-    console.log("Servidor recebeu uma requisição");
-    response.end("Hello World!");
+    const { method, url } = request
+
+    if (method === "GET" && url === "/gym") {
+        return response.end("Lista de equipamentos")
+
+    }
+
+    if (method === "POST" && url === "/gym") {
+        return response.writeHead(201).end("Equipamento cadastrado!")
+    }
+
+    return response.writeHead(404).end("Rota não encontrada!")
+    
 });
 
 server.listen(3333, () => {
