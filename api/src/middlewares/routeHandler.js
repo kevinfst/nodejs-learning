@@ -1,6 +1,8 @@
 import { routes } from "../routes.js";
 
 export function routeHandler(request, response){
+    console.log(request.url)
+    
     const route = routes.find((route) => {
         return route.method === request.method && route.path === request.url
     })

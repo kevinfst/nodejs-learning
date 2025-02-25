@@ -13,5 +13,13 @@ export const routes = [
         controller: (request, response) => {
             return response.writeHead(201).end(JSON.stringify(request.body))
         }
+    },
+
+    {
+        method: "DELETE",
+        path: "/gym/:id",
+        controller: (request, response) => {
+            return response.end("Removido!")
+        }
     }
 ]
