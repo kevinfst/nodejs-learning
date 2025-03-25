@@ -1,19 +1,22 @@
 import { routes } from "../routes.js";
 
-export function routeHandler(request, response){
+export function routeHandler(request, response) {
     const route = routes.find((route) => {
-        return route.method === request.method && route.path.test(request.url)
-    })
+        return route.method === request.method && route.path.test(request.url);
+    });
 
+    if (route) {
+        const routeParams = request.url.match(route.path);
 
-    if(route){
-        const routeParams = request.url.match(route.path)
-        const { ...params } = routeParams.groups
+        if (routeParams && routeParams.groups) {
+            const { ...params } = routeParams.groups;
+            request.params = params;
+        } else {
+            request.params = {}; // Garante que params existe, mesmo se não houver grupos
+        }
 
-        request.params = params
-
-       return route.controller(request, response) 
+        return route.controller(request, response);
     }
 
-    return response.writeHead(404).end("Rota não encontrada!") 
+    return response.writeHead(404).end("Rota não encontrada!");
 }
