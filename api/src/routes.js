@@ -4,7 +4,9 @@ export const routes = [
         method: "GET",
         path: "/gym",
         controller: (request, response) => {
-            return response.writeHead(200).end("Lista de equipamentos")
+        /*  console.log(request.query)
+            return response.writeHead(200).end("Lista de equipamentos") */
+            return response.end(JSON.stringify(request.query))
         },
     },
 
