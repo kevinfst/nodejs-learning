@@ -6,25 +6,29 @@ export class Database {
     database = {}
 
     constructor() {
-        this.persist()
+        fs.readFile(DATABASE_PATH, "utf8")
+        .then((data) => {
+            this.database = JSON.parse(data)
+        })
+        .catch(() => this.persist())
     }
 
-    persist(){
+    persist() {
         fs.writeFile(DATABASE_PATH, JSON.stringify(this.database))
     }
 
-    insert(table, data){
-        if(Array.isArray(this.database[table])){
+    insert(table, data) {
+        if (Array.isArray(this.database[table])) {
             this.database[table].push(data)
         }
-        else{
+        else {
             this.database[table] = [data]
         }
 
         this.persist()
     }
 
-    select(table){
+    select(table) {
         return this.database[table]
     }
 }
