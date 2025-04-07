@@ -1,0 +1,12 @@
+{
+    "products": [
+        {
+            "name": "Anilha",
+            "price": 130.5
+        },
+        {
+            "name": "Barbell",
+            "price": 149.99
+        }
+    ]
+}
