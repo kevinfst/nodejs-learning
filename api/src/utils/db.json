@@ -1,12 +1,1 @@
-{
-    "products": [
-        {
-            "name": "Dumbbell",
-            "price": 130.5
-        },
-        {
-            "name": "Barbell",
-            "price": 149.99
-        }
-    ]
-}
+{"products":[{"name":"Dumbbell","price":130.5},{"name":"Barbell","price":149.99},{"name":"Test","price":189.99}]}
